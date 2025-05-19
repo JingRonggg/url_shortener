@@ -20,4 +20,4 @@ jobs:
         run: cd server && uv sync
 
       - name: run tests
-        run: uv run pytest test
+        run: cd server && uv run pytest test
