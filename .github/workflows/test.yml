@@ -1,0 +1,19 @@
+name: integration-test
+on: [push, pull_request]
+
+jobs:
+  runs-on: ubuntu-22.04
+  steps:
+    - name: checkout repo
+      uses: actions/checkout@v4
+    
+    - name: setup python
+      uses: actions/setup-python@v5
+      with:
+        python-version: 3.12
+
+    - name: install dependencies
+      run: cd server && uv sync
+
+    - name: run tests
+      run: uv run pytest test
